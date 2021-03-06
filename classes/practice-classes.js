@@ -44,18 +44,16 @@ class Character {
 
 //CODE HERE
 class NPC extends Character {
-  constructor(name, type, phrase, location){
+  constructor(name, type, location, phrase){
     super(name, type);
-    this.phrase = '';
-    this.location = '';
-  }
-  dialogue(phrase, location){
-    super.getInfo()
     this.phrase = phrase;
     this.location = location;
+  }
+  dialogue(name, phrase){
     return `${this.name}: ${this.phrase}`
   }
 }
+
 
 /*
     Create an NPC named Ralph who is a human located in Niceland. His phrase should be `I'm gonna wreck it!`. 
@@ -63,7 +61,11 @@ class NPC extends Character {
 */
 
 //CODE HERE
-const ralph = new NPC('Ralph', 'human', `I'm gonna wreck it!`, 'Niceland')
+const ralph = new NPC('Ralph', 'human', `Niceland`, `I'm gonna wreck it!`)
+const ral = new NPC('Agnona', 'dwarf', `What'll it be?`, 'Tavern')
+console.log(ral)
+
+
 
 /*
     Next you're going to create three variables to store information about Ralph.
@@ -108,14 +110,22 @@ class Player extends Character{
       this.attackLevel = attackLevel;
   }
   defend(amount){
+    this.healthLevel = this.healthLevel - amount;
     if (this.healthLevel > 0){
-      return {
-        attackStrength: amount,
-        remainingHealth: this.healthLevel - amount,
-        message: `${this.name} is still in the fight!`,
-      } 
-    }
-    return `${this.name} has been defeated!`
+      // if(remainingHealth > 0)
+    
+        return {
+          attackStrength: amount,
+          remainingHealth: this.healthLevel - amount,
+          message: `${this.name} is still in the fight!`,
+        }
+      }
+      
+      else
+      {
+        return `${this.name} has been defeated!`
+      }
+    
   }
 }
 /*
@@ -138,6 +148,7 @@ const ozai = new Player('Ozai', 'firebender', 100, 0);
 
 //CODE HERE
 const battle = ozai.defend(aang.attackLevel);
+console.log(battle)
 
 //////////////////PROBLEM 4////////////////////
 
@@ -166,8 +177,8 @@ class Hero extends Player {
   }
   useSuperPower(index){
       for (let i = 0; i < this.superPowers.length; i++){
-        if (this.superPowers[i] === index){
-          return `${this.name} used ${this.power}!`
+        if (i === index){
+          return `${this.name} used ${this.superPowers[i]}!`
       }
     }
   }
@@ -190,3 +201,5 @@ fireSpitter.addSuperPower('wing smack')
 fireSpitter.addSuperPower('munch')
 
 const fireSpitterAttack = fireSpitter.useSuperPower(0)
+
+console.log(fireSpitterAttack)

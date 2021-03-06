@@ -40,14 +40,13 @@
   function lightSwitch(){
     let isTheLightOn = false;
 
-    function flipTheSwitch(){
+    return function flipTheSwitch(){
       if (isTheLightOn === false){
          return isTheLightOn = true;
       } else {
          return isTheLightOn = false;
       }
     }
-    return flipTheSwitch()
   }
   
   //Create a variable called kitchenSwitch whose value is the invocation of lightSwitch.
@@ -59,7 +58,7 @@
   //Invoke kitchenSwitch.
 
   //CODE HERE
-  // kitchenSwitch();
+  kitchenSwitch();
   
   //Create a variable called bathroomSwitch whose value is the invocation of lightSwitch. 
 
@@ -70,8 +69,8 @@
   
   //CODE HERE
 
-  // bathroomSwitch();
-  // bathroomSwitch();
+  bathroomSwitch();
+  bathroomSwitch();
   
   ////////////PROBLEM 3////////////
 
@@ -91,7 +90,7 @@
 
     return {
       readInfo: function(){
-        return `This is a ${plant} that is ${height} inches tall.`;
+        return `This is a ${plant} plant that is ${height} inches tall.`;
       },
       waterPlant: function(){
         return height += 1
@@ -120,14 +119,14 @@
   function inventory(){
     const products = [];
 
-  function readProducts(){
+    function readProducts(){
       return products
     };
 
     function addToProducts(str){
       return products.push(str)
     };
-    
+      
     function deleteFromProducts(str){
       for (let i = 0; i < products.length; i++){
         if (products[i] === str){
@@ -136,12 +135,30 @@
         }
       }
     }
-    // return {
-    //   readProducts(),
-    //   addToProducts(),
-    //   deleteFromProducts()
-    // } 
   };
+
+  // function inventory(){
+  //   const products = [];
+
+  //   return(
+  //     readProducts: function(){
+  //       return products
+  //     },
+
+  //     addToProducts: function(str){
+  //       return products.push(str)
+  //     },
+
+  //     deleteFromProducts: function(str){
+  //     for (let i = 0; i < products.length; i++){
+  //       if (products[i] === str){
+
+  //         return products.pop(products[i])
+  //       }
+  //     }
+  //   })
+  
+
 
 
   /*
@@ -157,5 +174,5 @@
   */
 
   //CODE HERE
-  // shoes.addToProducts('vans')
+  shoes.addToProducts('vans')
 
