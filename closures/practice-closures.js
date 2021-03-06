@@ -116,13 +116,34 @@
 
   //CODE HERE
 
+  // function inventory(){
+  //   const products = [];
+
+  //   function readProducts(){
+  //     return products
+  //   };
+
+  //   function addToProducts(str){
+  //     return products.push(str)
+  //   };
+      
+  //   function deleteFromProducts(str){
+  //     for (let i = 0; i < products.length; i++){
+  //       if (products[i] === str){
+
+  //         return products.pop(products[i])
+  //       }
+  //     }
+  //   }
+  // };
+
   function inventory(){
     const products = [];
 
     function readProducts(){
       return products
     };
-
+  
     function addToProducts(str){
       return products.push(str)
     };
@@ -130,34 +151,17 @@
     function deleteFromProducts(str){
       for (let i = 0; i < products.length; i++){
         if (products[i] === str){
-
-          return products.pop(products[i])
+  
+          return products.splice(products[i], 1)
         }
       }
     }
-  };
-
-  // function inventory(){
-  //   const products = [];
-
-  //   return(
-  //     readProducts: function(){
-  //       return products
-  //     },
-
-  //     addToProducts: function(str){
-  //       return products.push(str)
-  //     },
-
-  //     deleteFromProducts: function(str){
-  //     for (let i = 0; i < products.length; i++){
-  //       if (products[i] === str){
-
-  //         return products.pop(products[i])
-  //       }
-  //     }
-  //   })
-  
+    return {
+        readProducts: readProducts(),
+        addToProducts: addToProducts(),
+        deleteFromProducts : deleteFromProducts()
+    }
+  };  
 
 
 

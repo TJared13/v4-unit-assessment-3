@@ -1,10 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export default class Shelf extends Component{
+const Shelf = (props) => {
+    const {clearShelf, shelf} = props;
 
-    render(){
-        return(
-            <p>Shelf</p>
-        )
-    }
+    const mappedTitles = shelf.map(data => {
+        return (
+        <div>
+            <div>{data.title}</div> 
+        </div>)
+    });
+    
+    return(
+        <div>
+            {mappedTitles}
+            <button onclick={clearShelf}>Clear DataTransferItemList</button>
+        </div>
+        
+    )
 }
+
+    export default Shelf

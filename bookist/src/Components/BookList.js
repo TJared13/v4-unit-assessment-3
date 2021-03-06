@@ -1,25 +1,21 @@
 import React from 'react'
 
 const BookList = (props) => {
-    const {books} = props;
-    console.log(books)
+    const {addToShelf, books} = props;
+    
     const mappedArr = books.map(data => {
         return (
         <div>
         <div>{data.title}</div> 
         <div>{data.author}</div>
-        <img src={data.img} /> 
+        <img src={data.img} alt='Book Cover' onClick={addToShelf(data.title)}/> 
         </div>)
     })
     
-    console.log(mappedArr)
     return(
         <div>
         {mappedArr}
         </div>
-
-
-
         )
     }
 
