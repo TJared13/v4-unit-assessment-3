@@ -19,7 +19,7 @@ class App extends Component {
   };
 
   addToShelf = (title) => {
-    this.state.shelf.push(title)
+    this.state.shelf.push()
   
 };
     
@@ -32,20 +32,23 @@ class App extends Component {
     let filteredBooks = [];
 
         for(let i = 0; i < books.length; i++){
-            if (books[i].includes(input)){
+            if (books[i].hasOwnProperty(input)){
                 filteredBooks.push(books[i])
+                this.setState({books: filteredBooks})
             }
         }
-        this.setState({books: filteredBooks})
+        return filteredBooks;
   };
 
   render(){
     return (
       <div className="App">
         <Header />
-        <SearchBar filterBooks={this.filterBooks} />
+        <SearchBar filterBooks={this.filteredBooks} />
+        <div className='mainContain'>
         <BookList addToShelf={this.addToShelf} books={this.state.books} />
-        {/* <Shelf clearShelf={this.clearShelf} shelf={this.state.shelf} books={this.state.books}/> */}
+        <Shelf clearShelf={this.clearShelf} shelf={this.state.shelf} books={this.state.books}/>
+        </div>
       </div>
     );
   }

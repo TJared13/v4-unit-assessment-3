@@ -11,9 +11,12 @@ const Shelf = (props) => {
     });
     
     return(
-        <div>
-            {mappedTitles}
-            <button onclick={clearShelf}>Clear DataTransferItemList</button>
+        <div className='shelf'>
+            <div className='shelfItems'>
+                <h3>Your Shelf</h3>
+                {mappedTitles}
+                <button onclick={clearShelf}>Clear Item</button>
+            </div>
         </div>
         
     )

@@ -5,15 +5,17 @@ const BookList = (props) => {
     
     const mappedArr = books.map(data => {
         return (
-        <div>
-        <div>{data.title}</div> 
-        <div>{data.author}</div>
-        <img src={data.img} alt='Book Cover' onClick={addToShelf(data.title)}/> 
+        <div className='booksContain'>
+            <ul className='bookItem'>
+            <li><img src={data.img} alt='Book Cover' onClick={addToShelf(data.title)}/> </li>
+            <li><h2>{data.title}</h2></li> 
+            <li>{data.author}</li>
+            </ul>
         </div>)
     })
     
     return(
-        <div>
+        <div  >
         {mappedArr}
         </div>
         )

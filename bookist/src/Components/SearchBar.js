@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 export default class SearchBar extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             userInput: '',
         }
@@ -10,15 +10,19 @@ export default class SearchBar extends Component {
 
     handleChange(val){ 
         this.setState({userInput: val})
-    }
+    };
+
+    handleClick(){
+        // return filteredBooks;
+    };
 
     
     render(){
         console.log(this.state.userInput)
         return (
-            <div>
+            <div className='search'>
                 <input type='text' onChange={(e) => this.handleChange(e.target.value)} />
-                <button>Search</button>
+                <button onClick={this.handleClick()}>Search</button>
                 <button>Clear Search</button>
             </div>
         )
