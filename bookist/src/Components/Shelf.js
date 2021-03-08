@@ -6,7 +6,7 @@ const Shelf = (props) => {
     const mappedTitles = shelf.map(data => {
         return (
         <div>
-            <div>{data.title}</div> 
+            <div>{data}</div> 
         </div>)
     });
     
@@ -15,7 +15,7 @@ const Shelf = (props) => {
             <div className='shelfItems'>
                 <h3>Your Shelf</h3>
                 {mappedTitles}
-                <button onclick={clearShelf}>Clear Item</button>
+                <button onClick={() => clearShelf()}>Clear Item</button>
             </div>
         </div>
         

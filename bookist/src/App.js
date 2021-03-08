@@ -13,38 +13,38 @@ class App extends Component {
       books: data,
       shelf: [],
     }
-    this.addToShelf = this.addToShelf.bind(this)
-    this.clearShelf = this.clearShelf.bind(this)
-    this.filterBooks = this.filterBooks.bind(this)
+    // this.addToShelf = this.addToShelf.bind(this)
+    // this.clearShelf = this.clearShelf.bind(this)
+    // this.filterBooks = this.filterBooks.bind(this)
   };
 
-  addToShelf = (title) => {
-    this.state.shelf.push()
-  
+  addToShelf = (title, i) => {
+    this.setState({shelf: [...this.state.shelf, title]})
+    let shelfedBooks = this.state.books.slice();
+    shelfedBooks.splice(i, 1)
+    this.setState({books: shelfedBooks})
 };
     
-  clearShelf(){
-    this.setState({myArray: []})
+  clearShelf = () => {
+    this.setState({shelf: []});
+    this.setState({books: data})
+  }
+
+  filterBooks = (input) => {
+    let filteredBooks = this.state.books.filter((elem) => {
+      if (elem.title.toLowerCase().includes(input) || elem.author.toLowerCase().includes(input))
+      return elem
+    })
+    this.setState({books: filteredBooks})
   };
 
-  filterBooks(input){
-    let books = this.state.books;
-    let filteredBooks = [];
-
-        for(let i = 0; i < books.length; i++){
-            if (books[i].hasOwnProperty(input)){
-                filteredBooks.push(books[i])
-                this.setState({books: filteredBooks})
-            }
-        }
-        return filteredBooks;
-  };
+  clearSearch = () => this.setState({books: data})
 
   render(){
     return (
       <div className="App">
         <Header />
-        <SearchBar filterBooks={this.filteredBooks} />
+        <SearchBar filterBooks={this.filterBooks} clearSearch={this.clearSearch} />
         <div className='mainContain'>
         <BookList addToShelf={this.addToShelf} books={this.state.books} />
         <Shelf clearShelf={this.clearShelf} shelf={this.state.shelf} books={this.state.books}/>

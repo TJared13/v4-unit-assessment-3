@@ -7,7 +7,7 @@ const BookList = (props) => {
         return (
         <div className='booksContain'>
             <ul className='bookItem'>
-            <li><img src={data.img} alt='Book Cover' onClick={addToShelf(data.title)}/> </li>
+            <li><img src={data.img} alt='Book Cover' onClick={() => addToShelf(data.title)}/> </li>
             <li><h2>{data.title}</h2></li> 
             <li>{data.author}</li>
             </ul>

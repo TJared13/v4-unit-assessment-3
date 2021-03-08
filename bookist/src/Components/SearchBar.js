@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
 
 export default class SearchBar extends Component {
-    constructor(props){
-        super(props);
+    // const {filteredBooks, clearSearch} = props;
+
+    constructor(){
+        super();
         this.state = {
             userInput: '',
         }
     };
 
-    handleChange(val){ 
+    handleChange = (val) => { 
         this.setState({userInput: val})
     };
 
-    handleClick(){
-        // return filteredBooks;
+    handleClick = () => {
+        this.props.filterBooks(this.state.userInput)
     };
+
+    handleClear = () => {
+        this.setState({userInput: ''})
+        this.props.clearSearch();
+    }
 
     
     render(){
@@ -22,8 +29,8 @@ export default class SearchBar extends Component {
         return (
             <div className='search'>
                 <input type='text' onChange={(e) => this.handleChange(e.target.value)} />
-                <button onClick={this.handleClick()}>Search</button>
-                <button>Clear Search</button>
+                <button onClick={() => this.handleClick()}>Search</button>
+                <button onClick={() => this.handleClear()}>Clear Search</button>
             </div>
         )
     }
